@@ -6,8 +6,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.contrib.gis.geos import Point
 
-from providers_service_area.models import Provider, ServiceArea
-from providers_service_area.serializers import ProviderSerializer, ServiceAreaSerializer, ResultsSerializer
+from providers.models import Provider, ServiceArea
+from providers.serializers import ProviderSerializer, ServiceAreaSerializer, ResultsSerializer
 
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
@@ -92,22 +92,25 @@ class ServiceAreaViewSet(viewsets.ModelViewSet):
     serializer_class = ServiceAreaSerializer
     queryset = ServiceArea.objects.all()
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     # Cache Request for 2 hours
-    long = openapi.Parameter('long', in_=openapi.IN_QUERY, description='string', type=openapi.TYPE_STRING,)
+    lng = openapi.Parameter('lng', in_=openapi.IN_QUERY, description='string', type=openapi.TYPE_STRING,)
     lat = openapi.Parameter('lat', in_=openapi.IN_QUERY, description='string', type=openapi.TYPE_STRING,)
 
 
     @swagger_auto_schema(operation_id="get_providers_in_the_area",
-                         manual_parameters=[lat, long],
+                         manual_parameters=[lat, lng],
                          responses={200: ResultsSerializer(many=True)},
                          operation_summary="")
-    @method_decorator(cache_page(60 * 60 * 2))
     @action(detail=False, methods=['get'], name="Get providers in the area")
     def get_providers_in_the_area(self, request):
         """
         Endpoint that takes a lat/lng pair as arguments and return a list of all polygons that include the given lat/lng
         """
-        x_coords = request.GET.get('long', None)
+        x_coords = request.GET.get('lng', None)
         y_coords = request.GET.get('lat', None)
         if x_coords and y_coords:
             location = Point(float(x_coords), float(y_coords), srid=4326)
