@@ -1,5 +1,5 @@
 from django.contrib import admin
-from providers_service_area.models import Provider, ServiceArea
+from providers.models import Provider, ServiceArea
 
 
 class ProviderAdmin(admin.ModelAdmin):

@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.urls import path, include
 from rest_framework import routers
-import providers_service_area.views as views
+import providers.views as views
 
 router = routers.DefaultRouter()
 router.register(r'providers', views.ProviderViewSet)

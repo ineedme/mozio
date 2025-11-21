@@ -1,0 +1,85 @@
+[
+  {
+    "model": "providers.provider",
+    "pk": 1,
+    "fields": {
+      "name": "Uber",
+      "email": "uber@example.com",
+      "phone_number": "1234567890",
+      "language": "en",
+      "currency": "USD"
+    }
+  },
+  {
+    "model": "providers.provider",
+    "pk": 2,
+    "fields": {
+      "name": "Lyft",
+      "email": "lyft@example.com",
+      "phone_number": "0987654321",
+      "language": "en",
+      "currency": "USD"
+    }
+  },
+  {
+    "model": "providers.provider",
+    "pk": 3,
+    "fields": {
+      "name": "Gett",
+      "email": "gett@example.com",
+      "phone_number": "5555555555",
+      "language": "en",
+      "currency": "USD"
+    }
+  },
+  {
+    "model": "providers.servicearea",
+    "pk": 1,
+    "fields": {
+      "name": "Downtown Manhattan",
+      "price": "12.50",
+      "area": "POLYGON((-74.01 40.71, -74.01 40.72, -74.00 40.72, -74.00 40.71, -74.01 40.71))",
+      "provider": 1
+    }
+  },
+  {
+    "model": "providers.servicearea",
+    "pk": 2,
+    "fields": {
+      "name": "San Francisco",
+      "price": "15.00",
+      "area": "POLYGON((-122.42 37.77, -122.42 37.78, -122.41 37.78, -122.41 37.77, -122.42 37.77))",
+      "provider": 2
+    }
+  },
+  {
+    "model": "providers.servicearea",
+    "pk": 3,
+    "fields": {
+      "name": "Midtown Manhattan (Overlaps with Downtown)",
+      "price": "14.00",
+      "area": "POLYGON((-74.005 40.715, -74.005 40.725, -73.995 40.725, -73.995 40.715, -74.005 40.715))",
+      "provider": 3
+    }
+  },
+  {
+    "model": "providers.servicearea",
+    "pk": 4,
+    "fields": {
+      "name": "Los Angeles",
+      "price": "20.00",
+      "area": "POLYGON((-118.25 34.05, -118.25 34.06, -118.24 34.06, -118.24 34.05, -118.25 34.05))",
+      "provider": 1
+    }
+  },
+    {
+    "model": "providers.servicearea",
+    "pk": 5,
+    "fields": {
+      "name": "Bay Area (Overlaps with San Francisco)",
+      "price": "25.00",
+      "area": "POLYGON((-122.5 37.7, -122.5 37.9, -122.3 37.9, -122.3 37.7, -122.5 37.7))",
+      "provider": 2
+    }
+  }
+]
