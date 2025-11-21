@@ -37,7 +37,7 @@ This project provides a powerful and efficient solution for managing providers a
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/jules-dourlens/mozio.git
+   git clone https://github.com/ineedme/mozio.git
    ```
 2. **Install dependencies:**
    ```bash
