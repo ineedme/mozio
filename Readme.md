@@ -3,7 +3,7 @@
 
 ## Overview
 
-This project provides a powerful and efficient solution for managing providers and their service areas, allowing for dynamic pricing based on geographical location. The API is built with Django REST Framework and PostGIS, offering a robust and scalable platform for geo-pricing applications.
+This project provides a powerful and efficient solution for managing providers and their service areas, allowing for dynamic pricing based on geographical location. The API is built with Django REST Framework and PostGIS, offering a robust and scalable platform for geo-pricing applications. A Vue.js and Tailwind CSS frontend is also included to provide a user-friendly interface for interacting with the API.
 
 ## Table of Contents
 
@@ -24,6 +24,7 @@ This project provides a powerful and efficient solution for managing providers a
 - **Geo-pricing Queries:** Quickly find all providers that serve a specific location, along with their pricing information.
 - **Caching:** Improve performance by caching the results of geo-pricing queries.
 - **Spatial Indexing:** Optimize geo-pricing queries by using PostGIS's spatial indexing capabilities.
+- **Frontend Interface:** A Vue.js and Tailwind CSS frontend with a Leaflet map to visualize service areas and search for providers.
 
 ## Requirements
 
@@ -32,8 +33,12 @@ This project provides a powerful and efficient solution for managing providers a
 - Django REST Framework 3.14+
 - PostGIS 2.5+
 - PostgreSQL 12+
+- Node.js 20+
+- npm 10+
 
 ## Installation
+
+### Backend
 
 1. **Clone the repository:**
    ```bash
@@ -55,9 +60,26 @@ This project provides a powerful and efficient solution for managing providers a
    python manage.py runserver
    ```
 
+### Frontend
+
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd frontend
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Create a `.env` file:**
+   - Copy the `.env.example` file to `.env` and configure the `VITE_API_URL` if your backend is not running on `http://127.0.0.1:8000`.
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
 ## Usage
 
-The API is available at `http://localhost:8000/api/v1/`. You can use a tool like `curl` or Postman to interact with the API.
+The API is available at `http://localhost:8000/api/v1/`. You can use a tool like `curl` or Postman to interact with the API. The frontend is available at `http://localhost:5173`.
 
 **Note:** After running the server for the first time, you can load the sample data by running the `loaddata` command as described in the "Loading Fixtures" section.
 
@@ -69,12 +91,12 @@ The API is available at `http://localhost:8000/api/v1/`. You can use a tool like
    ```
 - **Get a list of all providers that serve a specific location:**
    ```bash
-   curl http://localhost:8000/api/v1/providers/get-providers-in-area/?lat=34.0522&lng=-118.2437
+   curl http://localhost:8000/api/v1/serviceareas/get_providers_in_the_area/?lat=34.0522&lng=-118.2437
    ```
 
 ## API Documentation
 
-The API documentation is available at `http://localhost:8000/swagger/`.
+The API documentation is available at `http://localhost:8000/`.
 
 ## Loading Fixtures
 
